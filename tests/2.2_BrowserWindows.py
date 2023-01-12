@@ -2,7 +2,6 @@ from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-# import java.awt.Robot;
 
 PATH = "chromedriver.exe"
 driver = webdriver.Chrome(PATH)
@@ -43,7 +42,6 @@ def windowButton():
     textFile = driver.find_element(By.ID, 'sampleHeading')
     print(textFile.text)
 
-    
 # messageWindowButton
 def windowMessage():
     btnwindowButton = driver.find_element(By.ID, 'messageWindowButton')
@@ -63,6 +61,6 @@ def windowMessage():
     textFile = driver.find_element(By.ID, 'sampleHeading')
     print(textFile.text)
    
-# # windowButton()
+# windowButton()
 windowMessage()
 # newTab()
