@@ -1,6 +1,8 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import openpyxl as O
 
 Execl_file = "Book1.xlsx"
@@ -25,7 +27,8 @@ textCurrentAddrest = driver.find_element(By.ID, 'currentAddress')
 # textCurrentAddrest.send_keys("Test3")
 textPermanetAddres = driver.find_element(By.ID, 'permanentAddress')
 # textPermanetAddres.send_keys("Test4")
-# btnSubmit = driver.find_element(By.CSS_SELECTOR, 'button[id="submit"][class="btn btn-primary"]')
+sleep(2)
+btnSubmit = driver.find_element(By.CSS_SELECTOR, 'button[id="submit"]')
 # btnSubmit.click()
 def intputText():
     for r in range(2, ws.max_row + 1):
@@ -37,8 +40,9 @@ def intputText():
         textCurrentAddrest.send_keys(currentAddrest)
         permanetAddres = str(ws.cell(r,4).value)
         textPermanetAddres.send_keys(permanetAddres)
-        driver.find_element(By.CSS_SELECTOR, 'button[id="submit"][class="btn btn-primary"]').click()
-        # # btnSubmit.click()
+        element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'button[id="submit"][class="btn.btn-primary"]')))
+        element.click()
+        # driver.find_element(By.CSS_SELECTOR, 'button[id="submit"][class="btn.btn-primary"]').click()
         # textName.clear()
         # textEmail.clear()
         # textCurrentAddrest.clear()
