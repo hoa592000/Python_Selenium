@@ -31,4 +31,4 @@ def handle2():
     action1.key_down(Keys.ARROW_DOWN).perform()
     action1.key_down(Keys.ARROW_UP).perform()
 # handle1()
-# handle2()
+handle2()

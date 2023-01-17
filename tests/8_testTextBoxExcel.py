@@ -20,33 +20,43 @@ sleep(1)
 driver.get("https://demoqa.com/text-box")
 sleep(5)
 textName = driver.find_element(By.ID, 'userName')
-# textName.send_keys("Test1")
 textEmail = driver.find_element(By.ID, 'userEmail')
-# textEmail.send_keys("Test2")
 textCurrentAddrest = driver.find_element(By.ID, 'currentAddress')
-# textCurrentAddrest.send_keys("Test3")
 textPermanetAddres = driver.find_element(By.ID, 'permanentAddress')
-# textPermanetAddres.send_keys("Test4")
 sleep(2)
 btnSubmit = driver.find_element(By.CSS_SELECTOR, 'button[id="submit"]')
+# WebDriverWait wait
 # btnSubmit.click()
 def intputText():
     for r in range(2, ws.max_row + 1):
         fullName = str(ws.cell(r,1).value)
-        textName.send_keys(fullName)
         email = str(ws.cell(r,2).value)
-        textEmail.send_keys(email)
         currentAddrest = str(ws.cell(r,3).value)
-        textCurrentAddrest.send_keys(currentAddrest)
         permanetAddres = str(ws.cell(r,4).value)
-        textPermanetAddres.send_keys(permanetAddres)
-        element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'button[id="submit"][class="btn.btn-primary"]')))
-        element.click()
-        # driver.find_element(By.CSS_SELECTOR, 'button[id="submit"][class="btn.btn-primary"]').click()
-        # textName.clear()
-        # textEmail.clear()
-        # textCurrentAddrest.clear()
-        # textPermanetAddres.clear()
+        if(fullName is None):
+            print("Full Name invalidate")
+        else:
+            textName.send_keys(fullName)
+        if(len(email)==0):
+            print("Email invalidate")
+        else:
+            textEmail.send_keys(email)
+        if(len(currentAddrest)==0):
+            print("CurentAddrest invalidate")
+        else:
+            textCurrentAddrest.send_keys(currentAddrest)
+        if(len(permanetAddres)==0):
+            print("PermanetAddres invalidate")
+        else:
+            textPermanetAddres.send_keys(permanetAddres)
+        # element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'button[id="submit"][class="btn.btn-primary"]')))
+        # element.click()
+        sleep(5)
+        driver.find_element(By.CSS_SELECTOR, 'button[id="submit"][type="button"]').click()
+        textName.clear()
+        textEmail.clear()
+        textCurrentAddrest.clear()
+        textPermanetAddres.clear()
         sleep(15)
         # Result = str()
         # if str(Result)   

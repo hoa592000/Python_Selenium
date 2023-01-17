@@ -61,6 +61,6 @@ def windowMessage():
     textFile = driver.find_element(By.ID, 'sampleHeading')
     print(textFile.text)
    
-# windowButton()
+windowButton()
 windowMessage()
-# newTab()
+newTab()
